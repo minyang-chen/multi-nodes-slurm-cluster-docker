@@ -1,0 +1,30 @@
+services:
+  slurmnode8:
+    image: slurm-node:latest
+    hostname: slurmnode8
+    user: admin
+    network_mode: host
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    volumes:
+      - /mnt/workspace:/home/admin
+#    ports:
+#      - 16818:6818
+
+volumes:
+  nfs_data:
+#  nfs_data:
+#    driver: nfs4
+#    driver_opts:
+#      share: 192.168.0.33:/mnt/data
+
+networks:
+  host:
+    name: host
+    external: true
+
