@@ -3,6 +3,10 @@
 # authentication
 sudo service munge restart
 
+# shell
+curl -sS https://starship.rs/install.sh | sh
+eval "$(starship init bash)"
+
 sudo mkdir -p ~/.local
 sudo chown admin:admin -R ~/.local
 
@@ -24,6 +28,5 @@ source /etc/profile.d/lmod.sh
 module --version
 module use ~/.local/easybuild/modules/
 module avail
-
 
 tail -f /dev/null
