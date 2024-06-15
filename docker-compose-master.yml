@@ -1,0 +1,46 @@
+services:
+  mariadb:
+    image: mariadb:10.10
+    hostname: mariadb
+    container_name: mariadb
+    network_mode: host
+    # ports:
+    #   - 3306:3306
+    volumes:
+      - ./data/slurm-maria-db:/var/lib/mysql
+    environment:
+      - MARIADB_USER=slurm
+      - MARIADB_PASSWORD=slurm
+      - MARIADB_ROOT_PASSWORD=dbroot-password
+      - MARIADB_DATABASE=slurm
+  slurmdbd:
+    image: slurm-dbd:latest
+    hostname: slurmdbd
+    user: slurm
+    network_mode: host
+    volumes:
+      - /mnt/workspace:/home/slurm
+#    ports:
+#      - 17031:7031
+#    depends:
+#      - mariadb
+  slurmmaster:
+    image: slurm-master:latest
+    hostname: slurmmaster
+    user: admin
+    network_mode: host
+    volumes:
+      - /mnt/workspace:/home/admin
+#    ports:
+#      - 16817:6817
+#      - 16819:6819      
+#    depends:
+#      - slurmdbd
+
+volumes:
+  shared.vol:
+
+networks:
+  host:
+    name: host
+    external: true

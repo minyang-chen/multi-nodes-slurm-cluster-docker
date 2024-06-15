@@ -10,7 +10,7 @@ echo "---> Starting the MUNGE Authentication service (munged) ..."
 sudo service munge start
 
 source /etc/profile.d/lmod.sh
-module 
+module --version
 
 echo "---> Starting the slurmdbd ..."
 slurmdbd -Dvvv
