@@ -13,7 +13,7 @@ services:
               count: 1
               capabilities: [ gpu ]
     volumes:
-      - ./workspace:/home/admin 
+      - /mnt/workspace:/home/admin 
       - ./etc/slurm-llnl/cgroup.conf:/etc/slurm-llnl/cgroup.conf            
       - ./etc/slurm-llnl/gres.conf:/etc/slurm-llnl/gres.conf            
       - ./etc/slurm-llnl/slurm.conf:/etc/slurm-llnl/slurm.conf            

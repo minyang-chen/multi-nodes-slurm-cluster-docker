@@ -5,6 +5,8 @@
 # sudo chmod 400 /etc/munge/munge.key
 # sudo chown munge:munge /etc/munge/munge.key
 
+sudo touch /var/run/slurmdbd/slurmdbd.pid
+
 # user home permission
 sudo chown admin:admin -R /home/admin
 
