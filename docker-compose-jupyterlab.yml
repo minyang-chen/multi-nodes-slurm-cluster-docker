@@ -1,25 +1,29 @@
 services:
   slurmjupyter:
     image: slurm-jupyter:latest
+    container_name: slurmjupyter
     hostname: slurmjupyter
     user: admin
     network_mode: host
-    # deploy:
-    #   resources:
-    #     reservations:
-    #       devices:
-    #         - driver: nvidia
-    #           count: 1
-    #           capabilities: [gpu]        
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
     volumes:
-      - /mnt/workspace:/home/admin
-#    ports: 
-#      - 8888:8888
-#    depends:
-#      - slurmmaster
-volumes:
-  shared.vol:
-
+      - ./workspace:/home/admin 
+      - ./etc/slurm-llnl/cgroup.conf:/etc/slurm-llnl/cgroup.conf            
+      - ./etc/slurm-llnl/gres.conf:/etc/slurm-llnl/gres.conf            
+      - ./etc/slurm-llnl/slurm.conf:/etc/slurm-llnl/slurm.conf            
+      - ./etc/slurm-llnl/slurmdbd.conf:/etc/slurm-llnl/slurmdbd.conf                 
+      - ./jupyter/docker-entrypoint.sh:/etc/slurm-llnl/docker-entrypoint.sh                                
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro                        
+    # ports:
+    #   - 8888:8888
+    # links:
+    #   - slurmmaster
 networks:
   host:
     name: host

@@ -1,0 +1,49 @@
+services:
+  mariadb:
+    image: mariadb:10.10
+    hostname: mariadb
+    container_name: mariadb
+    network_mode: host
+    # ports:
+    #   - 3306:3306
+    volumes:
+      - ./data/slurm-mariadb:/var/lib/mysql
+    environment:
+      - MARIADB_USER=slurm
+      - MARIADB_PASSWORD=slurm
+      - MARIADB_ROOT_PASSWORD=dbroot-password
+      - MARIADB_DATABASE=slurm
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    container_name: phpmyadmin    
+    #network_mode: host    
+    ports:
+      - 8000:80
+    environment:
+      - PMA_ARBITRARY=1
+    links:
+      - mariadb      
+  slurmdbd:
+    image: slurm-dbd:latest
+    container_name: slurmdbd        
+    hostname: slurmdbd
+    user: slurm
+    network_mode: host    
+    volumes:
+      - ./workspace:/home/slurm
+      - ./etc/slurm-llnl/cgroup.conf:/etc/slurm-llnl/cgroup.conf            
+      - ./etc/slurm-llnl/gres.conf:/etc/slurm-llnl/gres.conf            
+      - ./etc/slurm-llnl/slurm.conf:/etc/slurm-llnl/slurm.conf            
+      - ./etc/slurm-llnl/slurmdbd.conf:/etc/slurm-llnl/slurmdbd.conf                 
+      - ./dbd/docker-entrypoint.sh:/etc/slurm-llnl/docker-entrypoint.sh
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro                  
+    # ports:
+    #   - 7031:7031
+    # links:
+    #   - mariadb
+
+networks:
+  host:
+    name: host
+    external: true

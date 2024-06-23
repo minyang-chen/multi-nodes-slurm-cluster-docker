@@ -1,0 +1,33 @@
+services:
+  mariadb:
+    image: mariadb:10.10
+    restart: unless-stopped
+    hostname: mariadb
+    container_name: mariadb
+    network_mode: host
+    # ports:
+    #   - 3306:3306
+    volumes:
+      - /mnt/data/slurm-mariadb:/var/lib/mysql
+    environment:
+      - MARIADB_USER=slurm
+      - MARIADB_PASSWORD=slurm
+      - MARIADB_ROOT_PASSWORD=dbroot-password
+      - MARIADB_DATABASE=slurm
+  phpmyadmin:
+    image: phpmyadmin
+    restart: unless-stopped
+    hostname: phpmyadmin    
+    container_name: phpmyadmin    
+    #network_mode: host    
+    ports:
+      - 8000:80
+    environment:
+      - PMA_ARBITRARY=1
+    links:
+      - mariadb      
+
+networks:
+  host:
+    name: host
+    external: true

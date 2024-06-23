@@ -1,17 +1,11 @@
 #!/bin/bash
 
-# sudo chmod 400 /etc/munge/munge.key
-# sudo chown munge:munge /etc/munge/munge.key
+#sudo sed -i "s/REPLACE_IT/CPUs=$(nproc)/g" /etc/slurm-llnl/slurm.conf
 
-# user home permission
-sudo chown admin:admin -R /home/admin
-
-# start services
 sudo service munge start
-echo "---> MUNGE status ..."
-munge -n | unmunge | grep STATUS
-
 sudo service slurmctld start
+
+sleep 5
 
 # source /etc/profile.d/lmod.sh
 # module --version
@@ -25,7 +19,7 @@ sudo service slurmctld start
 #done
 
 #environment check spack
-source /tools/spack/share/spack/setup-env.sh
+source /opt/spack/share/spack/setup-env.sh
 spack --version
 
 #environment check easybuild
@@ -33,16 +27,13 @@ eb --version
 eb --show-system-info
 eb --show-config
 
-eb bzip2-1.0.6.eb
-
 #environment check lmod
 source /etc/profile.d/lmod.sh
 #source /opt/focal/lmod/lmod/init/bash
 module --version
-#module use ~/.local/easybuild/modules/
+module use ~/.local/easybuild/modules/
 module avail
 
-sleep 3
 sudo service slurmctld restart
 
 tail -f /dev/null

@@ -1,4 +1,6 @@
 # Compiled Lua sources
+workspace
+data
 luac.out
 
 # luarocks build files

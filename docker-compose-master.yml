@@ -1,54 +1,23 @@
 services:
-  mariadb:
-    image: mariadb:10.10
-    hostname: mariadb
-    container_name: mariadb
-    network_mode: host
-    # ports:
-    #   - 3306:3306
-    volumes:
-      - ./data/slurm-maria-db:/var/lib/mysql
-    environment:
-      - MARIADB_USER=slurm
-      - MARIADB_PASSWORD=slurm
-      - MARIADB_ROOT_PASSWORD=dbroot-password
-      - MARIADB_DATABASE=slurm
-  phpmyadmin:
-    image: phpmyadmin
-    restart: always
-    ports:
-      - 8000:80
-    environment:
-      - PMA_ARBITRARY=1
-    links:
-      - mariadb  
-  slurmdbd:
-    image: slurm-dbd:latest
-    hostname: slurmdbd
-    user: slurm
-    network_mode: host
-    volumes:
-      - /mnt/workspace:/home/slurm
-#    ports:
-#      - 17031:7031
-#    depends:
-#      - mariadb
   slurmmaster:
     image: slurm-master:latest
+    container_name: slurmmaster
     hostname: slurmmaster
     user: admin
-    network_mode: host
+    network_mode: host    
     volumes:
-      - /mnt/workspace:/home/admin
-#    ports:
-#      - 16817:6817
-#      - 16819:6819      
-#    depends:
-#      - slurmdbd
-
-volumes:
-  shared.vol:
-
+      - ./workspace:/home/admin
+      - ./etc/slurm-llnl/cgroup.conf:/etc/slurm-llnl/cgroup.conf            
+      - ./etc/slurm-llnl/gres.conf:/etc/slurm-llnl/gres.conf            
+      - ./etc/slurm-llnl/slurm.conf:/etc/slurm-llnl/slurm.conf            
+      - ./etc/slurm-llnl/slurmdbd.conf:/etc/slurm-llnl/slurmdbd.conf                 
+      - ./master/docker-entrypoint.sh:/etc/slurm-llnl/docker-entrypoint.sh                  
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro                  
+    # ports:
+    #   - 6817:6817
+    #   - 6819:6819
+    # links:
+    #   - slurmdbd
 networks:
   host:
     name: host
