@@ -1,1 +1,1 @@
-docker compose -f docker-compose-node-8.yml up -d
+docker compose -f docker-compose-node-3.yml up -d
