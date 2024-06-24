@@ -5,13 +5,13 @@ services:
     hostname: slurmjupyter
     user: admin
     network_mode: host
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [ gpu ]
+#    deploy:
+#      resources:
+#        reservations:
+#          devices:
+#            - driver: nvidia
+#              count: 1
+#              capabilities: [ gpu ]
     volumes:
       - /mnt/workspace:/home/admin 
       - ./etc/slurm-llnl/cgroup.conf:/etc/slurm-llnl/cgroup.conf            
@@ -22,8 +22,6 @@ services:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro                        
     # ports:
     #   - 8888:8888
-    # links:
-    #   - slurmmaster
 networks:
   host:
     name: host
