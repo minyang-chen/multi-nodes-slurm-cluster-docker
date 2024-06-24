@@ -2,6 +2,7 @@ services:
   slurmnode2:
     image: slurm-node:latest
     hostname: slurmnode2
+    container_name: slurmnode2                
     user: admin
     network_mode: host
     deploy:
