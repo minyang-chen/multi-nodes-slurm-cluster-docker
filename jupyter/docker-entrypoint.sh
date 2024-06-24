@@ -44,5 +44,6 @@ module --version
 module use ~/.local/easybuild/modules/
 module avail
 
+sinfo
 
 tail -f /dev/null

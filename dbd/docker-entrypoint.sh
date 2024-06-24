@@ -38,5 +38,7 @@ eb bzip2-1.0.6.eb
 source /etc/profile.d/lmod.sh
 module --version
 
+sinfo
+
 echo "---> Starting the slurmdbd ..."
 slurmdbd -Dvvv

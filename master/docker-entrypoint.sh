@@ -45,4 +45,6 @@ module avail
 sleep 3
 sudo service slurmctld restart
 
+sinfo
+
 tail -f /dev/null
