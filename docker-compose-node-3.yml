@@ -5,13 +5,13 @@ services:
     container_name: slurmnode3
     user: admin
     network_mode: host
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [ gpu ]
+#    deploy:
+#      resources:
+#        reservations:
+#          devices:
+#            - driver: nvidia
+#              count: 1
+#              capabilities: [ gpu ]
     volumes:
       - /mnt/workspace:/home/admin
       - ./etc/slurm-llnl/cgroup.conf:/etc/slurm-llnl/cgroup.conf            
