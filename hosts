@@ -6,6 +6,6 @@
 192.168.0.42 slurmnode3
 192.168.0.44 slurmnode4
 192.168.0.43 slurmnode5
+192.168.0.30 slurmnode6
 192.168.0.22 nfs
 192.168.0.33 slurmjupyter
-
