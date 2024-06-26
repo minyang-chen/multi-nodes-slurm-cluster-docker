@@ -188,22 +188,16 @@ DefMemPerNode=0
 # Default count of CPUs allocated per allocated GPU. This value is used only if the job didn't specify --cpus-per-task and --cpus-per-gpu.
 #DefCpuPerGPU=4
 #
-# cpu+gpus
-#
 NodeName=slurmnode1 Gres=gpu:nvidia:1 CPUs=6 Boards=1 SocketsPerBoard=1 CoresPerSocket=6 ThreadsPerCore=1 RealMemory=7944 State=UNKNOWN
 NodeName=slurmnode2 Gres=gpu:nvidia:2 CPUs=22 Boards=1 SocketsPerBoard=1 CoresPerSocket=22 ThreadsPerCore=1 RealMemory=62000 State=UNKNOWN
 NodeName=slurmnode4 Gres=gpu:nvidia:1 CPUs=8 Boards=1 SocketsPerBoard=1 CoresPerSocket=8 ThreadsPerCore=1 RealMemory=31000 State=UNKNOWN
-NodeName=slurmnode6 Gres=gpu:nvidia:2 CPUs=24 Boards=1 SocketsPerBoard=1 CoresPerSocket=24 ThreadsPerCore=1 RealMemory=62000 State=UNKNOWN
-#
-# cpus only
-#
 NodeName=slurmnode3 CPUs=12 Boards=1 SocketsPerBoard=1 CoresPerSocket=12 ThreadsPerCore=1 RealMemory=31000 State=UNKNOWN
 NodeName=slurmnode5 CPUs=8 Boards=1 SocketsPerBoard=1 CoresPerSocket=8 ThreadsPerCore=1 RealMemory=31000 State=UNKNOWN
 #NodeName=slurmnode[5-10] CPUs=6 Boards=1 SocketsPerBoard=1 CoresPerSocket=6 ThreadsPerCore=1 RealMemory=7944 State=UNKNOWN
 #
 # PARTITIONS
 #
-PartitionName=slurmgpu Nodes=slurmnode[1,2,4,6] Default=YES MaxTime=INFINITE State=UP
+PartitionName=slurmgpu Nodes=slurmnode[1,2,4] Default=YES MaxTime=INFINITE State=UP
 PartitionName=slurmcpu Nodes=slurmnode[3,5] Default=YES MaxTime=INFINITE State=UP
 #PartitionName=slurmgpu Nodes=slurmnode[1-10] Default=YES MaxTime=INFINITE State=UP
 #

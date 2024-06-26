@@ -4,5 +4,3 @@ NodeName=slurmnode1 Name=gpu Type=nvidia File=/dev/nvidia0 CPUs=0-5
 NodeName=slurmnode2 Name=gpu Type=nvidia File=/dev/nvidia0 CPUs=0-5
 NodeName=slurmnode2 Name=gpu Type=nvidia File=/dev/nvidia1 CPUs=0-5
 NodeName=slurmnode4 Name=gpu Type=nvidia File=/dev/nvidia0 CPUs=0-5
-NodeName=slurmnode6 Name=gpu Type=nvidia File=/dev/nvidia0 CPUs=0-5
-NodeName=slurmnode6 Name=gpu Type=nvidia File=/dev/nvidia1 CPUs=0-5

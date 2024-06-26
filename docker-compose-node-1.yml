@@ -2,7 +2,7 @@ services:
   slurmnode1:
     image: slurm-node:latest
     hostname: slurmnode1
-    container_name: slurmnode1            
+    container_name: slurmnode1
     user: admin
     network_mode: host
     deploy:
@@ -14,12 +14,12 @@ services:
               capabilities: [ gpu ]
     volumes:
       - /mnt/workspace:/home/admin
-      - ./etc/slurm-llnl/cgroup.conf:/etc/slurm-llnl/cgroup.conf            
-      - ./etc/slurm-llnl/gres.conf:/etc/slurm-llnl/gres.conf            
-      - ./etc/slurm-llnl/slurm.conf:/etc/slurm-llnl/slurm.conf            
-      - ./etc/slurm-llnl/slurmdbd.conf:/etc/slurm-llnl/slurmdbd.conf                 
-      - ./node/docker-entrypoint.sh:/etc/slurm-llnl/docker-entrypoint.sh                          
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro                        
+      - ./etc/slurm-llnl/cgroup.conf:/etc/slurm-llnl/cgroup.conf
+      - ./etc/slurm-llnl/gres.conf:/etc/slurm-llnl/gres.conf
+      - ./etc/slurm-llnl/slurm.conf:/etc/slurm-llnl/slurm.conf
+      - ./etc/slurm-llnl/slurmdbd.conf:/etc/slurm-llnl/slurmdbd.conf
+      - ./node/docker-entrypoint.sh:/etc/slurm-llnl/docker-entrypoint.sh
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
     # ports:
     #   - 6818:6818
 volumes:

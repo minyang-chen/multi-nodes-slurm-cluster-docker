@@ -1,17 +1,17 @@
 services:
-  slurmnode3:
+  slurmnode6:
     image: slurm-node:latest
-    hostname: slurmnode3
-    container_name: slurmnode3
+    hostname: slurmnode6
+    container_name: slurmnode6
     user: admin
     network_mode: host
-#    deploy:
-#      resources:
-#        reservations:
-#          devices:
-#            - driver: nvidia
-#              count: 1
-#              capabilities: [ gpu ]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 2
+              capabilities: [ gpu ]
     volumes:
       - /mnt/workspace:/home/admin
       - ./etc/slurm-llnl/cgroup.conf:/etc/slurm-llnl/cgroup.conf
