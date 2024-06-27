@@ -1,6 +1,6 @@
 # multi-nodes-slurm-cluster-docker (ubuntu 20.04)
 ![slurm-docker-jupyterlab-logo](resources/slurm-docker-jupyter-logo.png)
-Fully Dockerized Slurm cluster with CPU/GPU partition and Jupyterlab HPC extensions for Multi-nodes deployment using docker-compose.
+Fully Distributed Dockerized Slurm cluster with CPU/GPU partition and Jupyterlab HPC extensions for Multi-nodes deployment using docker-compose.
 <div align="center">
 </div>
 
