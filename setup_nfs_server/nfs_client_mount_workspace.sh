@@ -7,7 +7,7 @@ sudo mkdir -p /mnt/workspace
 sudo chown nobody:nogroup /mnt/workspace
 sudo chmod -R 777 /mnt/workspace
 
-sudo mount -t nfs4 localhost: /mnt/workspace
+sudo mount -t nfs4 nfs: /mnt/workspace
 
 echo "list contents"
 ls -all /mnt/workspace
