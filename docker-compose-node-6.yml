@@ -3,6 +3,7 @@ services:
     image: slurm-node:latest
     hostname: slurmnode6
     container_name: slurmnode6
+    restart: unless-stopped
     user: admin
     network_mode: host
     deploy:
