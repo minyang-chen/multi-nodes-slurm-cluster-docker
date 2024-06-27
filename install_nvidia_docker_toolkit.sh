@@ -13,6 +13,23 @@ sudo nvidia-ctk runtime configure --runtime=docker
 
 cat /etc/docker/daemon.json
 
+sudo systemctl daemon-reload
 sudo systemctl restart docker
 
+#=== quick test
+sudo docker run --rm --runtime=nvidia --gpus all ubuntu nvidia-smi
+#=== 
+### Install Nvidia Docker runtime
+#curl -s -L https://nvidia.github.io/nvidia-container-runtime/gpgkey | \
+#  sudo apt-key add -
+#distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+#curl -s -L https://nvidia.github.io/nvidia-container-runtime/$distribution/nvidia-container-runtime.list | \
+#  sudo tee /etc/apt/sources.list.d/nvidia-container-runtime.list
+#sudo apt-get update
+#sudo apt-get install -y nvidia-container-runtime
+#sudo systemctl restart docker
+
+#sudo gpasswd -a $USER docker
+#sudo usermod -a -G docker $(whoami)
+#newgrp docker
 

@@ -1,5 +1,5 @@
-FROM docker.io/nvidia/cuda:11.0.3-base-ubuntu20.04
-#FROM nvidia/cuda:11.0.3-base-ubuntu20.04
+#FROM docker.io/nvidia/cuda:11.0.3-base-ubuntu20.04
+FROM nvidia/cuda:11.0.3-base-ubuntu20.04
 #FROM nvidia/cuda:11.0.3-devel-ubuntu20.04
 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -109,7 +109,8 @@ RUN curl -sLf https://spacevim.org/install.sh | bash
 #RUN curl -sLF https://starship.rs/install.sh | bash
 
 # Spack tool
-RUN mkdir -p /tools && cd /tools && git clone --depth=100 --branch=releases/v0.22 https://github.com/spack/spack.git /tools/spack && cd /tools/spack/bin && ./spack install zlib
+RUN mkdir -p /tools && cd /tools && git clone --depth=100 --branch=releases/v0.22 https://github.com/spack/spack.git /tools/spack 
+#RUN cd /tools/spack/bin && ./spack install zlib
 
 # Spack installation - miniconda3
 RUN cd /tools/spack && . share/spack/setup-env.sh && spack list conda && spack install miniconda3 && spack load miniconda3 && conda --version
