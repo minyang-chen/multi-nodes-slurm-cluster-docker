@@ -113,6 +113,7 @@ see screenshot here:
 ![Modules](resources/slurm-jupyterlab-ext-modules.png)
 
 ## Todo list
+- add monitor node
 - standardize multi-user /home NFS storage design
 - standardize multi-user /sw NFS storage design
 - add LDAP and other common authentication methods
