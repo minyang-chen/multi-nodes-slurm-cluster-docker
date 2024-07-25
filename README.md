@@ -40,6 +40,9 @@ UpTime=0-02:55:22
 ```
 <br />
 
+## Status
+On-going developments and improvement works
+
 ## Pre-requisites 
 1. Supported OS (tested on ubuntu 20.04+, should work on other platform with docker/nvidia-container-toolkit support)
 
@@ -95,7 +98,6 @@ this is the cluster accounting configuration file
 #### etc/slurm-llnl/slurm.no_tres
 this is the main cluster configuration file without tres enablement 
 
-
 ## Using Jupyterlab Slurm Extensions
 
 #### HPC-Tools (jupyterl_slurm)
@@ -110,6 +112,11 @@ GUI extension that support viewing of available and installed modules in the clu
 see screenshot here:
 ![Modules](resources/slurm-jupyterlab-ext-modules.png)
 
+## Todo list
+- standardize multi-user /home NFS storage design
+- standardize multi-user /sw NFS storage design
+- add LDAP and other common authentication methods
+- add dynamic code workspace supported ( gitpod like)
 
 #### Contribution, Bugs fixes and Support
 Welcome, please create an issue.
